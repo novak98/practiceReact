@@ -4,7 +4,7 @@ import Table from "../src/components/Table";
 import React, { useState, useEffect } from "react";
 import MainContainer from "../src/components/MainContainer";
 import RightSideBar from "./components/RightSideBar";
-import { Container, Row, Col } from 'react-grid-system';
+import { Row, Col } from 'react-grid-system';
 import LeftSideBar from "./components/LeftSideBar";
 
 const App = () => {
