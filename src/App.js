@@ -6,38 +6,46 @@ import MainContainer from "../src/components/MainContainer";
 import RightSideBar from "./components/RightSideBar";
 import { Row, Col } from 'react-grid-system';
 import LeftSideBar from "./components/LeftSideBar";
+import axios from "axios";
 
 const App = () => {
   const [items, setItems] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [editUser, setEditUser] = useState(false);
   console.log(editUser)
-  const onUserEdit = (user) => {
-    const updatedItems = items.map((item) => {
-      if(item.id === user.id) {
-        return user;
-      }
-      else {
-        return item;
+  const onUserEdit = (user) => { 
+    axios.put(`https://jsonplaceholder.typicode.com/users/${user.id}` , user)
+    .then(res => { console.log(res.data)
+      if(res.status === 200 ) {
+        const updatedItems = items.map((item) => {
+          if(item.id === user.id) {
+            return res.data;
+          }
+          else {
+            return item;
+          }
+        })
+        setItems(updatedItems)
+        setEditUser(false)
       }
     })
-    setItems(updatedItems)
   }
- const deleteUser = (id,e) => {
-  const filteredList = items.filter((item) => item.id !== id)
-  setItems(filteredList)
+  const deleteUser = (id,e) => {
+    axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+    .then(res => {
+      if(res.status === 200 ) {
+        const filteredList = items.filter((item) => item.id !== id) 
+        setItems(filteredList)
+      }
+    })
   }
-
+   
 
   useEffect(() => {
-    const fetchData = async () => {
-      const url = "https://jsonplaceholder.typicode.com/users";
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(data);
-      setItems(data);
-    };
-    fetchData();
+     axios.get(`https://jsonplaceholder.typicode.com/users`)
+    .then(res => {
+      setItems( res.data );
+    })
   }, []);
 
   return (

@@ -1,8 +1,10 @@
 import React from 'react';
 import Row from '../components/Row';
+import { Container } from 'react-grid-system';
 
 
 const Table = ({data,onItemClick,onEditClick,delEvent}) => (
+  <Container className="table-container">
     <table className="table">
         <thead className="tableHead">
               <th  scope="col">
@@ -28,6 +30,7 @@ const Table = ({data,onItemClick,onEditClick,delEvent}) => (
         {data.map(item => <Row item={item} onRowClick={() => onItemClick(item)} onEdit={() => onEditClick(item) } delEvent={delEvent}/>)}
         </tbody>
     </table>
+    </Container>
 );
 
 

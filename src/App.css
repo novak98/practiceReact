@@ -52,11 +52,14 @@
 
 .h4Billing {
   flex: 1;
+  margin: 0;
 }
 
 .rightsidebar {
   padding-left: 0px !important;
   padding-right: 0px !important;
+  
+ 
 }
 
 .tableHead {
@@ -75,11 +78,16 @@
 padding: 0px !important;
 }
 .left-icons {
-  align-self: center;
   margin-bottom: 300px;
 }
 .icons {
   padding: 20px;
+  color:#1e2649;
+  display:flex;
+  flex-direction: row;
+}
+.bottom-right-icon {
+  padding-top: 20px;
 }
 
 .LeftSideContainer {
@@ -89,16 +97,18 @@ padding: 0px !important;
 
 .heading2 {
   color: #1e2649;
-  font-size: 14px;
+  font-size: 16px;
   padding-top: 15px;
   padding-bottom: 35px;
-
+  padding-left: 10px;
 }
 
 .heading1 {
   color: #1e2649;
   font-weight: 700;
   padding-top: 25px;
+  font-size: 34px;
+  padding-left: 10px;
 }
 
 .tableCol {
@@ -148,6 +158,9 @@ table {
   height: 30px;
   border-width: 1px;
 }
+.saveButtonText {
+  font-size: 14px;
+}
 
 .btn2 {
   background-color: white;
@@ -169,7 +182,8 @@ table {
   display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+  flex-wrap: wrap;
+  margin: 0;
 }
 
 .rightp {
@@ -198,6 +212,7 @@ table {
   color: red;
   font-weight: 500;
   flex:1;
+  margin: 0;
 }
 
 .rightp {
@@ -212,6 +227,11 @@ table {
   color: #1e2649;
   padding-top: 25px;
 }
+.saveButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
 .btn3 {
   background-color: #1e2649;
@@ -219,11 +239,15 @@ table {
   width: 300px;
   height: 50px;
   border-radius: 5px;
-  margin-top: 25px;
-  margin-right: 15px;
-  margin-top: -20px;
-}
+  margin: 10%;
 
+
+}
+.rightbot {
+  border: 1px solid #e5e5e5;
+  margin: 7%;
+  padding: 0 !important;
+}
 
 input {
   border: none;
@@ -232,7 +256,10 @@ input {
   display: flex;
   flex:1;
 }
-
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
 
 label {
   color: gray;
@@ -242,8 +269,15 @@ label {
 
 .mainrow {
   border: 1px solid #e5e5e5;
+  
 }
-
+.mainrow:hover{
+ 
+    text-decoration:none;
+    color:black;
+    background-color:rgba(239,241,253,0.5);
+  
+}
 .topLeftIcon{
  padding: 20px;
  position: absolute;
@@ -269,10 +303,18 @@ label {
   transition: 850ms;
 }
 
-.nav-menu.active {
+.nav-menu-active {
   left: 0;
   transition: 350ms;
-  opacity: 1;
+  background-color: whitesmoke;
+  width: 500px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  transition: 850ms;
+  z-index: 5;
 }
 
 .nav-text {

@@ -1,5 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import { Container, Row, Col } from 'react-grid-system';
+import { faAdjust } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 const RightSideBar = ({currentUser,editUser,onUserEdit}) =>{
@@ -19,17 +21,18 @@ const RightSideBar = ({currentUser,editUser,onUserEdit}) =>{
     setUser(currentUser)
   }, [currentUser])
 
-  useEffect(() => {
-    if (editUser) {
-      onUserEdit(user)
-    }
-  }, [user,editUser])
+const onSaveClick = () => {
+  if (editUser) {
+    onUserEdit(user)
+  }
+}
+
 
   return  (
     <Container className="rightsidebar"> 
       <div className="row right">
         <h4 className="h4Billing">Billing information</h4>
-        <p className="rightp2">Inte betalad</p>
+        <h4 className="rightp2">Inte betalad</h4>
       </div>
     <div className="row right">
     <label htmlFor="email">Invoice Number:</label>
@@ -88,6 +91,9 @@ const RightSideBar = ({currentUser,editUser,onUserEdit}) =>{
     <div className="container rightbot">
       <div className="row" >
         <div className="col-12">
+        <div className="bottom-right-icon">
+      <FontAwesomeIcon icon={faAdjust} size={"2x"} />
+      </div>
         </div>
       </div>
       <div className="row">
@@ -97,11 +103,13 @@ const RightSideBar = ({currentUser,editUser,onUserEdit}) =>{
       </div>
       <div className="row" > 
         <div className="col-12">
-          <p>Skanna numret for att fylla fakturan automatiskt</p>
+          <p className="saveButtonText">Skanna numret for att fylla fakturan automatiskt</p>
         </div>
       </div>
-      <button className="btn3"> Ladda ner faktura</button>
     </div>
+    <Container className="saveButtonContainer">
+      <button className="btn3" onClick={onSaveClick}> Ladda ner faktura</button>
+    </Container>
   </Container>
 )
 }
